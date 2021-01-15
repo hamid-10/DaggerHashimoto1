@@ -8,7 +8,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-
+//import domain.Asset;
+//import domain.Block;
+//import domain.Chain;
+//import domain.Transaction;
 
 public class DaggerHashimoto {
 
