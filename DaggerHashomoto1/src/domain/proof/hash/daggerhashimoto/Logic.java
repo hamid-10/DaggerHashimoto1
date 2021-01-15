@@ -62,23 +62,22 @@ public class Logic {
 		class Local {
 			BigInteger quickCalcCached(int p) {
 				if (cache.containsKey(p)) {
-//		  				System.out.println("Test");
+					System.out.println("quickCalc test cache contains p");
 				} else if (p == 0) {
-					System.out.println("Test 2");
-					System.out.println(p);
-//							cache.put(p, (int) Math.pow(sha512(seed), w) % (int) P);
+					System.out.println("quickCalc test p = 0");
+//					cache.put(p, (int) Math.pow(sha512(seed), w) % (int) P);
 					cache.put(p, sha512(seed).pow(w).mod(P));
 				} else {
-					System.out.println("test:" + p);
-//							int x = (int) Math.pow(sha512(seed), (p + 1) * w) % (int) P;
+					System.out.println("quickCalc test p is: " + p);
+//					int x = (int) Math.pow(sha512(seed), (p + 1) * w) % (int) P;
 					BigInteger x = sha512(seed).pow(p + 1).multiply(w_1).mod(P);
-//							System.out.println("x here: " + Math.pow(sha512(seed), (p + 1) * w));
-//							System.out.println("P here: " + P);
+//					System.out.println("x here: " + Math.pow(sha512(seed), (p + 1) * w));
+//					System.out.println("P here: " + P);
 					for (int i = 0; i < Constants.k; i++) {
-//								x ^= quickCalcCached(x % p);
+//						x ^= quickCalcCached(x % p);
 						x = x.xor(quickCalcCached(x.mod(BigInteger.valueOf(p)).intValue()));
 					}
-//							cache.put(p, (int) Math.pow(x, w) % (int) P);
+//					cache.put(p, (int) Math.pow(x, w) % (int) P);
 					cache.put(p, x.pow(w).mod(P));
 				}
 				return cache.get(p);

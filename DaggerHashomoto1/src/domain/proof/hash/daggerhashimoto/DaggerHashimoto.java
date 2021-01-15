@@ -123,6 +123,26 @@ public class DaggerHashimoto {
 //		return txidMix.xor(BigInteger.valueOf(nonce).shiftLeft(192));
 //	}
 	
+	
+	public static BigInteger quickHashimoto(BigInteger seed, int dagSize, BigInteger header, long nonce) {
+//		m = dagSize // 2
+		int m = Math.floorDiv(dagSize, 2);
+		BigInteger mix = Logic.sha512(BigInteger.valueOf(nonce).add(header));
+
+		for (int i = 0; i < Constants.access; i++) {
+//			Can make this formula work with all BigInteger by making Loig.quickCalc() accept a BigInteger as well instead of int.
+//			Hence, we wont need to use the intValue of the BigInteger at the end
+//			For now, we make it work with int as well by doing the following
+//			(mix % 2**64):
+			BigInteger value_1 = BigInteger.valueOf(2).pow(64); // 2**64
+			BigInteger value_2 = mix.mod(value_1); // mix % 2**64
+//			mix ^= quick_calc(params, seed, m + (mix % 2**64) % m)
+			mix = mix.xor(
+					Logic.quickCalc(seed, BigInteger.valueOf(m).add(value_2).mod(BigInteger.valueOf(m)).intValue()));
+		}
+		return Logic.doubleSha512(mix);
+	}
+	
     public static void main (String[] args) {
     	
     	System.out.println("decoder " + Logic.decode_integer("Hello there"));
@@ -142,7 +162,22 @@ public class DaggerHashimoto {
        
 //      Testing quickCalc() which is in Logic...  
         System.out.println("quickCalc() here: " + Logic.quickCalc(big, 2));
-
+        
+//      Some calculation tests:
+        System.out.println("expo: " + Math.pow(2, 64));
+        System.out.println(BigInteger.valueOf(2).pow(64));
+        System.out.println(BigInteger.valueOf(Double.valueOf(Math.pow(2, 64)).longValue()));
+        
+        System.out.println(Double.valueOf(Math.pow(10, 19)).longValue());
+        System.out.println(Long.MAX_VALUE);
+        
+        System.out.println(Double.MAX_VALUE);
+        
+        System.out.println(Long.MAX_VALUE);
+        
+        System.out.println(new BigInteger("7").add(new BigInteger("875216180888826582278764536489264895208284347530920").mod(BigInteger.valueOf(2).pow(64)).mod(new BigInteger("7"))).intValue());
+        
+        System.out.println("quickHashimoto Here: " + quickHashimoto(new BigInteger("875216180888826582278764536489264895208284347530920"), 678, new BigInteger("8752161808888265822787645364892648952"), 273495));
     }
 
 }
