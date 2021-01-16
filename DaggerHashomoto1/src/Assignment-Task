@@ -1,0 +1,30 @@
+Students: Abdelhamid Lafkiri & Klara Dvorakova
+
+Classes:
+	- DagGenerator
+	- DaggerHashimoto
+	- Logic
+	- Constants
+	
+Methods - DagGenerator:
+	- createDaggGraph(BigInteger seed, int length) => Klara
+	- getPreviousHash(int n) => Abdelhamid
+	- getSeedset(Block block) => Abdelhamid
+	- getDagSize(Block block) => Abdelhamid
+	- getDaggerSet(Block block) = Klara & Abdelhamid
+	
+Methods - DaggerHashimoto:
+	- origHashimoto(Block block, long nonce) => Abdelhamid
+	- hashimoto(LinkedList<BigInteger> dag, int dagSize, BigInteger header, long nonce) => Abdelhamid
+	- quickHashimoto(BigInteger seed, int dagSize, BigInteger header, long nonce) => Abdelhamid
+
+Methods - Logic:
+	- encode_integer(BigInteger x) => Klara
+	- decode_integer(String s) => Klara
+	- sha512(BigInteger x) => Klara
+	- doubleSha512(BigInteger x) => Klara
+	- quickCalc(BigInteger seed, int p) => Abdelhamid
+	
+Methods in existing class - Chain:
+	- getBlockNumber(Block block) => Abdelhamid
+		
