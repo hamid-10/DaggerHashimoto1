@@ -5,7 +5,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 import domain.proof.hash.SHA512.SHA512;
-
+/**
+ * @author Abdelhamid Lafkiri & Klara Dvorakova
+ * 
+ *         This Class contains the logic used in the rest of the Dagger
+ *         Hashimoto : 
+ *         1- encode_integer:Encodes a BigInteger x as a string of 64 characters using a big-endian scheme
+ *         2- decode_integer: Unencodes a BigInteger x from a string using a big-endian scheme
+ *         3- sha512: 
+ *         4- doubleSha512: 
+ *         5- quickCalc: The light client computing function for the DAG, used for the light client evaluation
+ * 
+ *
+ */
 public class Logic {
 	protected static int NUMBER_OF_BITS = 512;
 	private static BigInteger moduloValue = new BigInteger("256");

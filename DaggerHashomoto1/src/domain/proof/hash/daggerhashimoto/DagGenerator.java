@@ -10,7 +10,12 @@ import java.util.Map;
 //import domain.Asset;
 //import domain.Block;
 //import domain.Chain;
-
+/**
+ * @author Abdelhamid Lafkiri & Klara Dvorakova
+ * 
+ * 
+ * 
+ */
 public class DagGenerator {
 
 	public DagGenerator() {

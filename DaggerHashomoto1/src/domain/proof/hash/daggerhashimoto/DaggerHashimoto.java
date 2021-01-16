@@ -12,6 +12,18 @@ import java.util.Map;
 //import domain.Chain;
 //import domain.Transaction;
 
+/**
+ * @author Abdelhamid Lafkiri
+ *
+ *         This Class contains the algorithms which are used for the mining:
+ *         Hashimoto which uses the blockchain as a source of data and intends
+ *         to achieve ASIC resistance and to make full storagage of the
+ *         blockcain. -an implementation for the original hashimoto -an
+ *         implementation for the quick Hashimoto which is used for the
+ *         Light-client friendly verification which uses quickCalc() (making a
+ *         block relatively efficiently verifiable by a light client) an
+ *         implementation for the Hashimoto().
+ */
 public class DaggerHashimoto {
 	
 //	public static BigInteger origHashimoto(Block block, long nonce) {
